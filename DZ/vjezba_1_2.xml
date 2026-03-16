@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<student>
+    <ime>Pero</ime>
+    <prezime>Perić</prezime>
+    <JMBG>3210987654321</JMBG>
+    <datumRodenja>2026-03-16</datumRodenja>
+    <godinaStudija>3</godinaStudija>
+    <kontakt>
+        <email>pperic@hotmail.com</email>
+        <telefon>0957376736</telefon>
+    </kontakt>
+    <upisaniKolegiji>
+        <kolegij>
+            <nazivKolegija>Mobilne komunikacije</nazivKolegija>
+            <profesor>Ana Anić</profesor>
+            <ECTS>4</ECTS>
+        </kolegij>
+        <kolegij>
+            <nazivKolegija>Baze podataka</nazivKolegija>
+            <profesor>Boško Buha</profesor>
+            <ECTS>5</ECTS>
+        </kolegij>
+        <kolegij>
+            <nazivKolegija>Matematika 1</nazivKolegija>
+            <profesor>Cezar Carević</profesor>
+            <ECTS>2</ECTS>
+        </kolegij>
+    </upisaniKolegiji>
+</student>
