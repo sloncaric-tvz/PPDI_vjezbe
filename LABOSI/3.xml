@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pokedex>
+    <Pokemon redniBroj="3">
+        <Naziv>Venusaur</Naziv>
+        <Statusi>
+            <Tipovi>
+                <Tip>Grass</Tip>
+                <Tip>Poison</Tip>
+            </Tipovi>
+            <Slabosti>
+                <Tip>Fire</Tip>
+                <Tip>Ice</Tip>
+                <Tip>Flying</Tip>
+                <Tip>Psychic</Tip>
+            </Slabosti>
+            <Visina>6'07"</Visina>
+            <Tezina>220.5 lbs</Tezina>
+            <Kategorija>Seed</Kategorija>
+            <Sposobnosti>Overgrow</Sposobnosti>
+        </Statusi>
+    </Pokemon>
+    <Pokemon redniBroj="6">
+        <Naziv>Charizard</Naziv>
+        <Statusi>
+            <Tipovi>
+                <Tip>Fire</Tip>
+                <Tip>Flying</Tip>
+            </Tipovi>
+            <Slabosti>
+                <Tip>Water</Tip>
+                <Tip>Electric</Tip>
+                <Tip>Rock</Tip>
+            </Slabosti>
+            <Visina>5'07"</Visina>
+            <Tezina>199.5 lbs</Tezina>
+            <Kategorija>Flame</Kategorija>
+            <Sposobnosti>Blaze</Sposobnosti>
+        </Statusi>
+    </Pokemon>
+    <Pokemon redniBroj="9">
+        <Naziv>Blastoise</Naziv>
+        <Statusi>
+            <Tipovi>
+                <Tip>Water</Tip>
+            </Tipovi>
+            <Slabosti>
+                <Tip>Grass</Tip>
+                <Tip>Electric</Tip>
+            </Slabosti>
+            <Visina>5'03"</Visina>
+            <Tezina>188.5 lbs</Tezina>
+            <Kategorija>Shellfish</Kategorija>
+            <Sposobnosti>Torrent</Sposobnosti>
+        </Statusi>
+    </Pokemon>
+</Pokedex>

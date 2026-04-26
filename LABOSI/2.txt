@@ -1,0 +1,2 @@
+Extensible znači da se povrh već definiranih elemenata uvijek mogu dodati novi elementi ako je to potrebno.
+I HTML i XML su jezici za označavanje, ali HTML ima već definirane oznake. U XML-u autor može izmisliti vlastite i dati im svoje značenje.

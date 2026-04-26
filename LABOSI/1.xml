@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Popis autor="Stjepko Lončarić" datum="27.3.2026.">
+    <Film>
+        <Naslov>The Fifth Element</Naslov>
+        <Godina>1997</Godina>
+        <Zanrovi>
+            <Zanr>Action</Zanr>
+            <Zanr>Adventure</Zanr>
+            <Zanr>Sci-Fi</Zanr>
+        </Zanrovi>
+    </Film>
+    <Film>
+        <Naslov>The Lord of the Rings: The Fellowship of the Ring</Naslov>
+        <Godina>2001</Godina>
+        <Zanrovi>
+            <Zanr>Action</Zanr>
+            <Zanr>Adventure</Zanr>
+            <Zanr>Fantasy</Zanr>
+        </Zanrovi>
+    </Film>
+    <Film>
+        <Naslov>Hot Fuzz</Naslov>
+        <Godina>2007</Godina>
+        <Zanrovi>
+            <Zanr>Action</Zanr>
+            <Zanr>Comedy</Zanr>
+            <Zanr>Mystery</Zanr>
+        </Zanrovi>
+    </Film>
+    <Film>
+        <Naslov>The Nice Guys</Naslov>
+        <Godina>2016</Godina>
+        <Zanrovi>
+            <Zanr>Crime</Zanr>
+            <Zanr>Comedy</Zanr>
+            <Zanr>Action</Zanr>
+        </Zanrovi>
+    </Film>
+    <Film>
+        <Naslov>Tenacious D in the Pick of Destiny</Naslov>
+        <Godina>2006</Godina>
+        <Zanrovi>
+            <Zanr>Rock musical</Zanr>
+            <Zanr>Comedy</Zanr>
+            <Zanr>Adventure</Zanr>
+        </Zanrovi>
+    </Film>
+</Popis>
