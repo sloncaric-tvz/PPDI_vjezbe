@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="narudzba">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="kupac" type="xs:string"/>
+        <xs:element name="datumNarudzbe" type="xs:date"/>
+        <xs:element name="kolicina">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="1"/>
+              <xs:maxInclusive value="50"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="statusNarudzbe">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="zaprimljena"/>
+              <xs:enumeration value="u_obradi"/>
+              <xs:enumeration value="poslana"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="ukupanIznos">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:decimal">
+                <xs:attribute name="valuta" type="xs:string" use="required" fixed="EUR"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<osoba xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="vjezba_4_1.xsd">
+    <ime>Ante</ime>
+    <cijena>5.99</cijena>
+    <godine>6</godine>
+    <aktivan>true</aktivan>
+    <datumRodjenja>2020-04-03</datumRodjenja>
+    <vrijemePocetka>08:20:59</vrijemePocetka>
+
+</osoba>

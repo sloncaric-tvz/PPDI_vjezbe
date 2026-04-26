@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<narudzba xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="vjezba_4_2.xsd">
+    <kupac>Antonije Antonijevićevski</kupac>
+    <datumNarudzbe>2026-12-31</datumNarudzbe>
+    <kolicina>50</kolicina>
+    <statusNarudzbe>zaprimljena</statusNarudzbe>
+    <ukupanIznos valuta="EUR">2</ukupanIznos>
+</narudzba>
