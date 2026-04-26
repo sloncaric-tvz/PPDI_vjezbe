@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Osoba spol="M">
+    <Ime>Hugh</Ime>
+    <Prezime>Mongoose</Prezime>
+    <MjestoStanovanja>
+        <Adresa>Gmižećeg mungosa 69</Adresa>
+        <Grad>Koprivnica</Grad>
+        <Drzava>Hrvatska</Drzava>
+    </MjestoStanovanja>
+    <Kontakt>
+        <Mobitel>091/234-5678</Mobitel>
+        <KucniTelefon>048/765-4321</KucniTelefon>
+        <Email>mongoose.hugh@email.com</Email>
+    </Kontakt>
+</Osoba>

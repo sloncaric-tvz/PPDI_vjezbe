@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<Narudzba>
+    <Ime>Hugh</Ime>
+    <Prezime>Mungus</Prezime>
+    <MjestoStanovanja>
+        <Adresa>Letećeg mungosa 420</Adresa>
+        <Grad>Ottawa</Grad>
+        <Drzava>Kanada</Drzava>
+    </MjestoStanovanja>
+    <NaručeniArtikl>
+        <Naziv>Tambura</Naziv>
+        <Kolicina>10</Kolicina>
+        <Cijena>5.99</Cijena>
+    </NaručeniArtikl>
+</Narudzba>
