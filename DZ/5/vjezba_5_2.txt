@@ -1,0 +1,21 @@
+1.  <BBB id="b1" grupa="A">XML</BBB>
+    <BBB id="b4" grupa="C">DOM</BBB>
+    <BBB id="b5">JSON</BBB>
+    <BBB id="b6" name="zadnji">JavaScript</BBB>
+
+2.  <BBB id="b1" grupa="A">XML</BBB>
+
+3.  <BBB name="bbb" grupa="A">XSLT</BBB>
+    <BBB id="b4" grupa="C">DOM</BBB>
+    <BBB name="test">AJAX</BBB>
+    <BBB id="b6" name="zadnji">JavaScript</BBB>
+
+4.  <BBB id="b1" grupa="A">XML</BBB>
+
+5.  <BBB id="b1" grupa="A">XML</BBB>
+    <BBB id="b2" grupa="B">PHP</BBB>
+    <BBB id="b4" grupa="C">DOM</BBB>
+
+6.  <BBB id="b3">XPath</BBB>
+    <BBB id="b5">JSON</BBB>
+    <BBB id="b6" name="zadnji">JavaScript</BBB>
