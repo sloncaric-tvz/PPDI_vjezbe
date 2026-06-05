@@ -12,7 +12,10 @@ $json = '{
       "godina": 2018,
       "boja": "crvena",
       "registriran": true,
-      "cijena": 25000
+      "cijena": 25000,
+      "kilometri": 10,
+      "gorivo": "benzin",
+      "vlasnik_od": 2015
     },
     {
       "marka": "Bugatti",
@@ -20,7 +23,10 @@ $json = '{
       "godina": 1945,
       "boja": "crna",
       "registriran": true,
-      "cijena": 20000000
+      "cijena": 20000000,
+      "kilometri": 10,
+      "gorivo": "dizel",
+      "vlasnik_od": 2015
     },
     {
       "marka": "Fiat",
@@ -28,7 +34,10 @@ $json = '{
       "godina": 1234,
       "boja": "bijela",
       "registriran": true,
-      "cijena": 150
+      "cijena": 150,
+      "kilometri": 10,
+      "gorivo": "dizel",
+      "vlasnik_od": 2015
     },
     {
       "marka": "BMW",
@@ -36,7 +45,10 @@ $json = '{
       "godina": 2020,
       "boja": "crna",
       "registriran": true,
-      "cijena": 500
+      "cijena": 500,
+      "kilometri": 10,
+      "gorivo": "dizel",
+      "vlasnik_od": 2015
     },
     {
       "marka": "Fiat",
@@ -44,7 +56,10 @@ $json = '{
       "godina": 2015,
       "boja": "bijela",
       "registriran": false,
-      "cijena": 50000
+      "cijena": 50000,
+      "kilometri": 10,
+      "gorivo": "kerozin",
+      "vlasnik_od": 2015
     }
   ]
 }';
@@ -182,7 +197,7 @@ $podatci = json_decode($json, true);
             border-top-color: #16a34a;
         }
 
-        .registriran .oznaka {
+        .registriran-oznaka {
             background: #dcfce7;
             color: #166534;
         }
@@ -191,13 +206,17 @@ $podatci = json_decode($json, true);
             border-top-color: #dc2626;
         }
 
-        .nije-registriran .oznaka {
+        .nije-registriran-oznaka {
             background: #fee2e2;
             color: #991b1b;
         }
 
-        .premium {
+        .premium-oznaka {
             background-color: gold;
+        }
+
+        .plebejac-oznaka {
+            background-color: red;
         }
 
         @media (max-width: 900px) {
@@ -306,19 +325,23 @@ $podatci = json_decode($json, true);
                 <?php
                 if ($auto["registriran"] == true) {
                     $klasa_reg = "registriran";
+                    $klasa_reg_oznaka = "registriran-oznaka";
                     $status = "Registriran";
                 } else {
                     $klasa_reg = "nije-registriran";
+                    $klasa_reg_oznaka = "nije-registriran-oznaka";
                     $status = "Nije registriran";
                 }
                 if ($auto["cijena"] > 20000){
-                    $klasa_cijena = "premium";
+                    $klasa_cijena = "premium-oznaka";
+                    $kat_cijena = "Skuplji automobil";
                 } else {
-                    $klasa_cijena = "plebejac";
+                    $kat_cijena = "Povoljniji automobil";
+                    $klasa_cijena = "plebejac-oznaka";
                 }
                 ?>
 
-                <div class="auto-kartica <?php echo $klasa_reg." ".$klasa_cijena ?>">
+                <div class="auto-kartica <?php echo $klasa_reg ?>">
                     <h3><?php echo $auto["marka"] . " " . $auto["model"]; ?></h3>
 
                     <p><strong>Marka:</strong> <?php echo $auto["marka"]; ?></p>
@@ -326,8 +349,12 @@ $podatci = json_decode($json, true);
                     <p><strong>Godina:</strong> <?php echo $auto["godina"]; ?></p>
                     <p><strong>Boja:</strong> <?php echo $auto["boja"]; ?></p>
                     <p><strong>Cijena:</strong> <?php echo $auto["cijena"]; ?> €</p>
+                    <p><strong>Kilometri:</strong> <?php echo $auto["kilometri"]; ?></p>
+                    <p><strong>Gorivo:</strong> <?php echo $auto["gorivo"]; ?></p>
+                    <p><strong>Vlasnik od:</strong> <?php echo $auto["vlasnik_od"]; ?></p>
 
-                    <span class="oznaka"><?php echo $status; ?></span>
+                    <span class="oznaka <?php echo $klasa_reg_oznaka; ?>"><?php echo $status; ?></span>
+                    <span class="oznaka <?php echo $klasa_cijena; ?>"><?php echo $kat_cijena; ?></span>
                 </div>
 
             <?php endforeach; ?>
