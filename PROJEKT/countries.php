@@ -1,0 +1,116 @@
+<?php
+$pageTitle = 'Countries | Travel Cost & Country Info';
+$activePage = 'countries';
+require_once __DIR__ . '/includes/header.php';
+
+$countries = simplexml_load_file('data/countries.xml');
+
+if($_SERVER['REQUEST_METHOD'] == 'GET' and isset($_GET['search'])){
+    /*$search = $_GET['search'] == '' ? '*' : $_GET['search'];
+    $region = $_GET['region'] == '' ? '*' : $_GET['region'];
+    $currency = $_GET['currency'] == '' ? '*' : $_GET['currency'];*/
+    $search = $_GET['search'];
+    $region = $_GET['region'];
+    $currency = $_GET['currency'];
+
+    /*$xpath = "//country[name='$search'][region='$region'][currency='$currency']";*/
+    $xpath = "//country";
+    $xpath .= $search == '' ? '' : "[name='$search']";
+    $xpath .= $region == '' ? '' : "[region='$region']";
+    $xpath .= $currency == '' ? '' : "[currency='$currency']";
+    $countries = $countries->xpath($xpath);
+}
+?>
+
+<section class="container page-header">
+    <p class="eyebrow">Local XML + XPath</p>
+    <h1>Country browser</h1>
+    <p>
+        Use this page to display data from <code>data/countries.xml</code>.
+        Add XPath filtering for search, region, and currency.
+    </p>
+</section>
+
+<section class="container section-stack">
+    <form class="filter-form" method="get" action="countries.php">
+        <div class="form-row">
+            <label for="search">Search country</label>
+            <input type="search" id="search" name="search" placeholder="Example: Croatia">
+        </div>
+
+        <div class="form-row">
+            <label for="region">Region</label>
+            <select id="region" name="region">
+                <option value="">All regions</option>
+                <option value="Europe">Europe</option>
+                <option value="Asia">Asia</option>
+                <option value="Americas">Americas</option>
+                <option value="Africa">Africa</option>
+                <option value="Oceania">Oceania</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="currency">Currency</label>
+            <input type="text" id="currency" name="currency" maxlength="3" placeholder="EUR">
+        </div>
+
+        <button class="button button-primary" type="submit">Apply filters</button>
+    </form>
+</section>
+
+<section class="container section-stack">
+    <div class="table-card">
+        <div class="table-card-header">
+            <div>
+                <p class="eyebrow">TODO</p>
+                <h2>XML country results</h2>
+            </div>
+            <span class="data-badge">Source: countries.xml</span>
+        </div>
+
+        <div class="notice-box">
+            Replace the sample rows below with countries loaded from XML. This is also where your XPath query results should appear.
+        </div>
+
+        <div class="responsive-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Capital</th>
+                        <th>Region</th>
+                        <th>Currency</th>
+                        <th>Language</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                       foreach($countries as $country){
+                            $url = e(url_for('country.php?code=' . $country->alpha3));
+                            echo "<tr>
+                            <td>$country->name</td>
+                            <td>$country->capital</td>
+                            <td>$country->region</td>
+                            <td>$country->currency</td>
+                            <td>$country->language</td>
+                            <td><a href='$url'>Details</a></td>";
+                       } 
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="container section-stack">
+    <div class="code-panel">
+        <h2>XPath examples to implement</h2>
+        <pre><code>//country[region='Europe']
+//country[currency='EUR']
+//country[alpha3='HRV']</code></pre>
+    </div>
+</section>
+
+<?php require_once __DIR__ . '/includes/footer.php'; ?>
