@@ -18,24 +18,24 @@ require_once __DIR__ . '/includes/header.php';
         <div class="form-row">
             <label for="left">First country</label>
             <select id="left" name="left">
-                <option value="HRV">Croatia</option>
-                <option value="JPN">Japan</option>
-                <option value="CAN">Canada</option>
-                <option value="BRA">Brazil</option>
-                <option value="AUS">Australia</option>
-                <option value="EGY">Egypt</option>
+                <option value="HRV" <?=$_GET['left'] == 'HRV' ? 'selected' : ''?>>Croatia</option>
+                <option value="JPN" <?=$_GET['left'] == 'JPN' ? 'selected' : ''?>>Japan</option>
+                <option value="CAN" <?=$_GET['left'] == 'CAN' ? 'selected' : ''?>>Canada</option>
+                <option value="BRA" <?=$_GET['left'] == 'BRA' ? 'selected' : ''?>>Brazil</option>
+                <option value="AUS" <?=$_GET['left'] == 'AUS' ? 'selected' : ''?>>Australia</option>
+                <option value="EGY" <?=$_GET['left'] == 'EGY' ? 'selected' : ''?>>Egypt</option>
             </select>
         </div>
 
         <div class="form-row">
             <label for="right">Second country</label>
             <select id="right" name="right">
-                <option value="JPN">Japan</option>
-                <option value="HRV">Croatia</option>
-                <option value="CAN">Canada</option>
-                <option value="BRA">Brazil</option>
-                <option value="AUS">Australia</option>
-                <option value="EGY">Egypt</option>
+                <option value="JPN" <?=$_GET['right'] == 'JPN' ? 'selected' : ''?>>Japan</option>
+                <option value="HRV" <?=$_GET['right'] == 'HRV' ? 'selected' : ''?>>Croatia</option>
+                <option value="CAN" <?=$_GET['right'] == 'CAN' ? 'selected' : ''?>>Canada</option>
+                <option value="BRA" <?=$_GET['right'] == 'BRA' ? 'selected' : ''?>>Brazil</option>
+                <option value="AUS" <?=$_GET['right'] == 'AUS' ? 'selected' : ''?>>Australia</option>
+                <option value="EGY" <?=$_GET['right'] == 'EGY' ? 'selected' : ''?>>Egypt</option>
             </select>
         </div>
 

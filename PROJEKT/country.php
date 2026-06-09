@@ -5,8 +5,17 @@ require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/api_client.php';
 require_once __DIR__ . '/includes/data_helpers.php';
 
-$selectedCode = selected_country_code('HRV');
-$restCountriesUrl = build_rest_countries_url($selectedCode);
+$jsonPath = __DIR__ . '/data/travel_tips.json';
+$travel_tips = load_travel_tips_json($jsonPath);
+
+$selectedCode = selected_country_code('');
+
+if($selectedCode != ''){
+    $xmlPath = __DIR__ . '/data/countries.xml';
+    $xpath = "//country[alpha3='$selectedCode']";
+    $country = load_countries_xml($xmlPath, $xpath)[0];
+    $restCountriesUrl = build_rest_countries_url($selectedCode);
+}
 ?>
 
 <section class="container page-header">
@@ -23,6 +32,7 @@ $restCountriesUrl = build_rest_countries_url($selectedCode);
         <div class="form-row">
             <label for="code">Country code</label>
             <select id="code" name="code">
+                <option value="" disabled selected>Odaberi državu</option>
                 <option value="HRV" <?= $selectedCode === 'HRV' ? 'selected' : ''; ?>>Croatia - HRV</option>
                 <option value="JPN" <?= $selectedCode === 'JPN' ? 'selected' : ''; ?>>Japan - JPN</option>
                 <option value="CAN" <?= $selectedCode === 'CAN' ? 'selected' : ''; ?>>Canada - CAN</option>
@@ -35,6 +45,13 @@ $restCountriesUrl = build_rest_countries_url($selectedCode);
     </form>
 </section>
 
+<?php
+    if($selectedCode == ''){
+        require_once __DIR__ . '/includes/footer.php';
+        exit;
+    }
+?>
+
 <section class="container country-summary">
     <div class="summary-visual">
         <div class="flag-placeholder" aria-label="Flag placeholder">Flag</div>
@@ -43,14 +60,16 @@ $restCountriesUrl = build_rest_countries_url($selectedCode);
 
     <div class="summary-content">
         <p class="eyebrow">Country profile</p>
-        <h2><!-- TODO: Echo country name from XML or REST API --> Croatia</h2>
+        <h2><?= $country->name ?></h2>
         <p>
             This hero area should display the selected country's name, flag, capital,
             region, and short travel description.
         </p>
         <div class="summary-actions">
-            <a class="button button-secondary" href="<?= e(url_for(BASE_PATH . 'currency.php?from=EUR&to=JPY')); ?>">Open currency page</a>
-            <a class="button button-ghost" href="<?= e(url_for(BASE_PATH . 'compare.php')); ?>">Compare countries</a>
+            <a class="button button-secondary" href="<?= e(url_for('currency.php?amount='
+                                                            . $travel_tips[$selectedCode]['dailyBudgetEur'] 
+                                                            . '&from=EUR&to=' . $country->currency)); ?>">Open currency page</a>
+            <a class="button button-ghost" href="<?= e(url_for('compare.php?left=HRV&right='. $selectedCode)); ?>">Compare countries</a>
         </div>
     </div>
 </section>
@@ -65,19 +84,19 @@ $restCountriesUrl = build_rest_countries_url($selectedCode);
             <dl class="detail-list">
                 <div>
                     <dt>Capital</dt>
-                    <dd><!-- TODO: XML value --> Zagreb</dd>
+                    <dd><?= $country->capital?></dd>
                 </div>
                 <div>
                     <dt>Region</dt>
-                    <dd><!-- TODO: XML value --> Europe</dd>
+                    <dd><?= $country->region?></dd>
                 </div>
                 <div>
                     <dt>Currency</dt>
-                    <dd><!-- TODO: XML value --> EUR</dd>
+                    <dd><?= $country->currency?></dd>
                 </div>
                 <div>
                     <dt>Language</dt>
-                    <dd><!-- TODO: XML value --> Croatian</dd>
+                    <dd><?= $country->language?></dd>
                 </div>
             </dl>
         </article>
@@ -90,15 +109,15 @@ $restCountriesUrl = build_rest_countries_url($selectedCode);
             <dl class="detail-list">
                 <div>
                     <dt>Estimated daily budget</dt>
-                    <dd><!-- TODO: JSON value --> 75 EUR</dd>
+                    <dd><?= $travel_tips[$selectedCode]['dailyBudgetEur'];?> €</dd>
                 </div>
                 <div>
                     <dt>Best season</dt>
-                    <dd><!-- TODO: JSON value --> Spring or early autumn</dd>
+                    <dd><?= $travel_tips[$selectedCode]['bestSeason'];?></dd>
                 </div>
                 <div>
                     <dt>Travel note</dt>
-                    <dd><!-- TODO: JSON value --> Coastal cities are more expensive in summer.</dd>
+                    <dd><?= $travel_tips[$selectedCode]['safetyNote'];?></dd>
                 </div>
             </dl>
         </article>

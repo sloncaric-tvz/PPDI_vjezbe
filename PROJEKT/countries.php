@@ -2,8 +2,14 @@
 $pageTitle = 'Countries | Travel Cost & Country Info';
 $activePage = 'countries';
 require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/data_helpers.php';
 
-$countries = simplexml_load_file('data/countries.xml');
+$xmlPath = __DIR__ . '/data/countries.xml';
+$xsdPath = __DIR__ . '/data/countries.xsd';
+
+if (!validate_countries_xml($xmlPath, $xsdPath)) {
+    exit;
+}
 
 if($_SERVER['REQUEST_METHOD'] == 'GET' and isset($_GET['search'])){
     /*$search = $_GET['search'] == '' ? '*' : $_GET['search'];
@@ -11,15 +17,16 @@ if($_SERVER['REQUEST_METHOD'] == 'GET' and isset($_GET['search'])){
     $currency = $_GET['currency'] == '' ? '*' : $_GET['currency'];*/
     $search = $_GET['search'];
     $region = $_GET['region'];
-    $currency = $_GET['currency'];
+    $currency = strtoupper($_GET['currency']);
 
     /*$xpath = "//country[name='$search'][region='$region'][currency='$currency']";*/
     $xpath = "//country";
-    $xpath .= $search == '' ? '' : "[name='$search']";
+    $xpath .= $search == '' ? '' : "[contains(name, '$search')]";
     $xpath .= $region == '' ? '' : "[region='$region']";
     $xpath .= $currency == '' ? '' : "[currency='$currency']";
-    $countries = $countries->xpath($xpath);
 }
+
+$countries = load_countries_xml($xmlPath, isset($xpath) ? $xpath : '');
 ?>
 
 <section class="container page-header">
@@ -35,24 +42,24 @@ if($_SERVER['REQUEST_METHOD'] == 'GET' and isset($_GET['search'])){
     <form class="filter-form" method="get" action="countries.php">
         <div class="form-row">
             <label for="search">Search country</label>
-            <input type="search" id="search" name="search" placeholder="Example: Croatia">
+            <input type="search" id="search" name="search" placeholder="Example: Croatia" <?= isset($_GET['search']) ? "value='$search'" : ''; ?>>
         </div>
 
         <div class="form-row">
             <label for="region">Region</label>
             <select id="region" name="region">
                 <option value="">All regions</option>
-                <option value="Europe">Europe</option>
-                <option value="Asia">Asia</option>
-                <option value="Americas">Americas</option>
-                <option value="Africa">Africa</option>
-                <option value="Oceania">Oceania</option>
+                <option value="Europe" <?= isset($_GET['region']) && $_GET['region'] == 'Europe' ? 'selected' : ''; ?>>Europe</option>
+                <option value="Asia" <?= isset($_GET['region']) && $_GET['region'] == 'Asia' ? 'selected' : ''; ?>>Asia</option>
+                <option value="Americas" <?= isset($_GET['region']) && $_GET['region'] == 'Americas' ? 'selected' : ''; ?>>Americas</option>
+                <option value="Africa" <?= isset($_GET['region']) && $_GET['region'] == 'Africa' ? 'selected' : ''; ?>>Africa</option>
+                <option value="Oceania" <?= isset($_GET['region']) && $_GET['region'] == 'Oceania' ? 'selected' : ''; ?>>Oceania</option>
             </select>
         </div>
 
         <div class="form-row">
             <label for="currency">Currency</label>
-            <input type="text" id="currency" name="currency" maxlength="3" placeholder="EUR">
+            <input type="text" id="currency" name="currency" maxlength="3" placeholder="EUR" <?= isset($_GET['currency']) ? "value='$currency'" : ''; ?>>
         </div>
 
         <button class="button button-primary" type="submit">Apply filters</button>
@@ -70,7 +77,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET' and isset($_GET['search'])){
         </div>
 
         <div class="notice-box">
-            Replace the sample rows below with countries loaded from XML. This is also where your XPath query results should appear.
+            <p class="status-message success">XML document successfully validated against countries.xsd.</p>
         </div>
 
         <div class="responsive-table">

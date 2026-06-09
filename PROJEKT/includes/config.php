@@ -8,7 +8,7 @@
  */
 
 define('APP_NAME', 'Travel Cost & Country Info Dashboard');
-define('BASE_URL', '/ppdi_projekt/ppdi_vjezbe/projekt/');
+define('BASE_URL', '/ppdi_vjezbe/projekt/');
 define('DATA_PATH', __DIR__ . '/../data');
 
 define('REST_COUNTRIES_BASE_URL', 'https://restcountries.com/v3.1');
