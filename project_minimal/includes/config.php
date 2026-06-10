@@ -1,7 +1,7 @@
 <?php
 //BASE_URL počinje od prvog foldera projekta unutar htdocs
 define('APP_NAME', 'Stjepko Loncaric - sloncaric@tvz.hr');
-define('BASE_URL', '/project_minimal');
+define('BASE_URL', '/ppdi_vjezbe/project_minimal');
 define('DATA_PATH', __DIR__ . '/../data');
 
 define('REST_COUNTRIES_BASE_URL', 'https://restcountries.com/v3.1');
