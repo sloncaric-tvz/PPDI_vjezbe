@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<countries>
+    <country code="HRV">
+        <name>Croatia</name>
+        <capital>Zagreb</capital>
+        <region>Europe</region>
+        <subregion>Southern Europe</subregion>
+        <currency>EUR</currency>
+        <language>Croatian</language>
+    </country>
+
+    <country code="JPN">
+        <name>Japan</name>
+        <capital>Tokyo</capital>
+        <region>Asia</region>
+        <subregion>Eastern Asia</subregion>
+        <currency>JPY</currency>
+        <language>Japanese</language>
+    </country>
+
+    <country code="USA">
+        <name>United States</name>
+        <capital>Washington, D.C.</capital>
+        <region>Americas</region>
+        <subregion>North America</subregion>
+        <currency>USD</currency>
+        <language>English</language>
+    </country>
+
+    <country code="GBR">
+        <name>United Kingdom</name>
+        <capital>London</capital>
+        <region>Europe</region>
+        <subregion>Northern Europe</subregion>
+        <currency>GBP</currency>
+        <language>English</language>
+    </country>
+
+    <country code="CHE">
+        <name>Switzerland</name>
+        <capital>Bern</capital>
+        <region>Europe</region>
+        <subregion>Western Europe</subregion>
+        <currency>CHF</currency>
+        <language>German, French, Italian, Romansh</language>
+    </country>
+
+    <country code="NOR">
+        <name>Norway</name>
+        <capital>Oslo</capital>
+        <region>Europe</region>
+        <subregion>Northern Europe</subregion>
+        <currency>NOK</currency>
+        <language>Norwegian</language>
+    </country>
+
+    <country code="BRA">
+        <name>Brazil</name>
+        <capital>Brasilia</capital>
+        <region>Americas</region>
+        <subregion>South America</subregion>
+        <currency>BRL</currency>
+        <language>Portuguese</language>
+    </country>
+
+    <country code="CAN">
+        <name>Canada</name>
+        <capital>Ottawa</capital>
+        <region>Americas</region>
+        <subregion>North America</subregion>
+        <currency>CAD</currency>
+        <language>English, French</language>
+    </country>
+
+    <country code="AUS">
+        <name>Australia</name>
+        <capital>Canberra</capital>
+        <region>Oceania</region>
+        <subregion>Australia and New Zealand</subregion>
+        <currency>AUD</currency>
+        <language>English</language>
+    </country>
+
+    <country code="KOR">
+        <name>South Korea</name>
+        <capital>Seoul</capital>
+        <region>Asia</region>
+        <subregion>Eastern Asia</subregion>
+        <currency>KRW</currency>
+        <language>Korean</language>
+    </country>
+
+    <country code="SWE">
+        <name>Sweden</name>
+        <capital>Stockholm</capital>
+        <region>Europe</region>
+        <subregion>Northern Europe</subregion>
+        <currency>SEK</currency>
+        <language>Swedish</language>
+    </country>
+
+    <country code="CHN">
+        <name>China</name>
+        <capital>Beijing</capital>
+        <region>Asia</region>
+        <subregion>Eastern Asia</subregion>
+        <currency>CNY</currency>
+        <language>Chinese</language>
+    </country>
+
+    <country code="MEX">
+        <name>Mexico</name>
+        <capital>Mexico City</capital>
+        <region>Americas</region>
+        <subregion>North America</subregion>
+        <currency>MXN</currency>
+        <language>Spanish</language>
+    </country>
+
+    <country code="SUR">
+        <name>Suriname</name>
+        <capital>Paramaribo</capital>
+        <region>Americas</region>
+        <subregion>South America</subregion>
+        <currency>SRD</currency>
+        <language>Dutch</language>
+    </country>
+
+    <country code="MNE">
+        <name>Montenegro</name>
+        <capital>Podgorica</capital>
+        <region>Europe</region>
+        <subregion>Southern Europe</subregion>
+        <currency>EUR</currency>
+        <language>Montenegrin</language>
+    </country>
+</countries>

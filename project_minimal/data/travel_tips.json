@@ -1,0 +1,68 @@
+{
+  "HRV": {
+    "dailyBudgetEur": 75,
+    "costLevel": "Medium",
+    "bestSeason": "Spring or early autumn",
+    "safetyNote": "Coastal cities are usually more expensive during peak summer months.",
+    "tips": [
+      "Compare accommodation prices between coastal and inland cities.",
+      "Use buses or ferries for regional travel.",
+      "Book popular coastal destinations early in summer."
+    ]
+  },
+  "JPN": {
+    "dailyBudgetEur": 110,
+    "costLevel": "High",
+    "bestSeason": "Spring or autumn",
+    "safetyNote": "Large cities are efficient but transport costs can add up quickly.",
+    "tips": [
+      "Use IC cards for public transport.",
+      "Check rail-pass options before long-distance travel.",
+      "Carry some cash for smaller shops and restaurants."
+    ]
+  },
+  "CAN": {
+    "dailyBudgetEur": 100,
+    "costLevel": "High",
+    "bestSeason": "Summer",
+    "safetyNote": "Distances between cities can be very large, so plan transport carefully.",
+    "tips": [
+      "Check domestic flight or train prices early.",
+      "Prepare for different weather conditions by region.",
+      "National parks may require advance reservations."
+    ]
+  },
+  "BRA": {
+    "dailyBudgetEur": 65,
+    "costLevel": "Medium",
+    "bestSeason": "May to September",
+    "safetyNote": "Use normal big-city safety precautions, especially at night.",
+    "tips": [
+      "Use official taxis or trusted ride apps.",
+      "Plan beach destinations around local weather patterns.",
+      "Keep copies of important travel documents."
+    ]
+  },
+  "AUS": {
+    "dailyBudgetEur": 120,
+    "costLevel": "High",
+    "bestSeason": "Spring or autumn",
+    "safetyNote": "Travel distances are long and some remote areas need extra preparation.",
+    "tips": [
+      "Budget extra for domestic transport.",
+      "Check local beach and wildlife safety advice.",
+      "Book intercity transport in advance."
+    ]
+  },
+  "EGY": {
+    "dailyBudgetEur": 55,
+    "costLevel": "Medium",
+    "bestSeason": "October to April",
+    "safetyNote": "Hot weather can affect sightseeing plans, especially around midday.",
+    "tips": [
+      "Start outdoor sightseeing early in the day.",
+      "Agree prices before using informal transport.",
+      "Stay hydrated during desert or historical-site visits."
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<countries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="countries.xsd">
+    <country id="hrv">
+        <alpha2>HR</alpha2>
+        <alpha3>HRV</alpha3>
+        <name>Croatia</name>
+        <capital>Zagreb</capital>
+        <region>Europe</region>
+        <subregion>Southern Europe</subregion>
+        <currency>EUR</currency>
+        <currencyName>Euro</currencyName>
+        <language>Croatian</language>
+    </country>
+    <country id="jpn">
+        <alpha2>JP</alpha2>
+        <alpha3>JPN</alpha3>
+        <name>Japan</name>
+        <capital>Tokyo</capital>
+        <region>Asia</region>
+        <subregion>Eastern Asia</subregion>
+        <currency>JPY</currency>
+        <currencyName>Japanese yen</currencyName>
+        <language>Japanese</language>
+    </country>
+    <country id="can">
+        <alpha2>CA</alpha2>
+        <alpha3>CAN</alpha3>
+        <name>Canada</name>
+        <capital>Ottawa</capital>
+        <region>Americas</region>
+        <subregion>North America</subregion>
+        <currency>CAD</currency>
+        <currencyName>Canadian dollar</currencyName>
+        <language>English/French</language>
+    </country>
+    <country id="bra">
+        <alpha2>BR</alpha2>
+        <alpha3>BRA</alpha3>
+        <name>Brazil</name>
+        <capital>Brasília</capital>
+        <region>Americas</region>
+        <subregion>South America</subregion>
+        <currency>BRL</currency>
+        <currencyName>Brazilian real</currencyName>
+        <language>Portuguese</language>
+    </country>
+    <country id="aus">
+        <alpha2>AU</alpha2>
+        <alpha3>AUS</alpha3>
+        <name>Australia</name>
+        <capital>Canberra</capital>
+        <region>Oceania</region>
+        <subregion>Australia and New Zealand</subregion>
+        <currency>AUD</currency>
+        <currencyName>Australian dollar</currencyName>
+        <language>English</language>
+    </country>
+    <country id="egy">
+        <alpha2>EG</alpha2>
+        <alpha3>EGY</alpha3>
+        <name>Egypt</name>
+        <capital>Cairo</capital>
+        <region>Africa</region>
+        <subregion>Northern Africa</subregion>
+        <currency>EGP</currency>
+        <currencyName>Egyptian pound</currencyName>
+        <language>Arabic</language>
+    </country>
+</countries>
