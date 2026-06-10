@@ -1,0 +1,122 @@
+{
+    "HRV": {
+        "dailyBudgetEur": 65,
+        "bestSeason": "May to September",
+        "costLevel": "medium",
+        "travelNote": "Croatia is suitable for coastal travel, historic cities, islands, national parks, and short regional trips.",
+        "safetyNote": "Use normal travel precautions, especially in crowded tourist areas during peak season.",
+        "recommendedStay": 7
+    },
+    "JPN": {
+        "dailyBudgetEur": 90,
+        "bestSeason": "March to May",
+        "costLevel": "high",
+        "travelNote": "Japan is ideal for city travel, food, temples, technology, public transport, and cultural sightseeing.",
+        "safetyNote": "Japan is generally comfortable for tourists, but transport rules and local etiquette should be respected.",
+        "recommendedStay": 10
+    },
+    "USA": {
+        "dailyBudgetEur": 120,
+        "bestSeason": "April to June",
+        "costLevel": "high",
+        "travelNote": "The United States is good for major cities, national parks, museums, entertainment, and road trips.",
+        "safetyNote": "Travel conditions vary strongly by city and region, so local planning is important.",
+        "recommendedStay": 14
+    },
+    "GBR": {
+        "dailyBudgetEur": 100,
+        "bestSeason": "May to September",
+        "costLevel": "high",
+        "travelNote": "The United Kingdom is suitable for museums, historic cities, countryside trips, castles, and cultural attractions.",
+        "safetyNote": "Use normal city travel precautions, especially in busy transport stations and tourist areas.",
+        "recommendedStay": 7
+    },
+    "CHE": {
+        "dailyBudgetEur": 140,
+        "bestSeason": "June to September",
+        "costLevel": "very high",
+        "travelNote": "Switzerland is known for mountains, lakes, trains, clean cities, hiking, and scenic routes.",
+        "safetyNote": "The country is convenient for travel, but mountain activities require weather awareness and preparation.",
+        "recommendedStay": 6
+    },
+    "NOR": {
+        "dailyBudgetEur": 130,
+        "bestSeason": "June to August",
+        "costLevel": "very high",
+        "travelNote": "Norway is best for fjords, hiking, scenic roads, northern landscapes, and nature-focused travel.",
+        "safetyNote": "Outdoor travel should be planned carefully because weather and terrain can change quickly.",
+        "recommendedStay": 7
+    },
+    "BRA": {
+        "dailyBudgetEur": 55,
+        "bestSeason": "September to November",
+        "costLevel": "medium",
+        "travelNote": "Brazil offers beaches, large cities, music, nature, cultural events, and long-distance travel opportunities.",
+        "safetyNote": "Research local areas before visiting and be careful with valuables in crowded public places.",
+        "recommendedStay": 12
+    },
+    "CAN": {
+        "dailyBudgetEur": 110,
+        "bestSeason": "June to September",
+        "costLevel": "high",
+        "travelNote": "Canada is suitable for national parks, lakes, mountains, multicultural cities, winter travel, and road trips.",
+        "safetyNote": "Nature travel requires preparation because distances are large and weather can change quickly.",
+        "recommendedStay": 10
+    },
+    "AUS": {
+        "dailyBudgetEur": 115,
+        "bestSeason": "September to November",
+        "costLevel": "high",
+        "travelNote": "Australia is popular for beaches, wildlife, cities, national parks, road trips, and outdoor activities.",
+        "safetyNote": "Outdoor and beach activities require attention to local safety signs, weather, and distance.",
+        "recommendedStay": 14
+    },
+    "KOR": {
+        "dailyBudgetEur": 80,
+        "bestSeason": "April to June",
+        "costLevel": "medium",
+        "travelNote": "South Korea is good for city travel, food, technology, history, public transport, and cultural sites.",
+        "safetyNote": "Public transport is convenient, but crowded city areas still require normal travel awareness.",
+        "recommendedStay": 7
+    },
+    "SWE": {
+        "dailyBudgetEur": 110,
+        "bestSeason": "June to August",
+        "costLevel": "high",
+        "travelNote": "Sweden is known for clean cities, museums, design, islands, forests, lakes, and summer daylight.",
+        "safetyNote": "Use normal travel precautions and prepare properly for nature trips outside urban areas.",
+        "recommendedStay": 6
+    },
+    "CHN": {
+        "dailyBudgetEur": 60,
+        "bestSeason": "April to May",
+        "costLevel": "medium",
+        "travelNote": "China offers historic sites, large cities, regional food, mountains, cultural landmarks, and high-speed rail travel.",
+        "safetyNote": "Plan routes, documents, translation tools, and payment methods before travelling.",
+        "recommendedStay": 12
+    },
+    "MEX": {
+        "dailyBudgetEur": 55,
+        "bestSeason": "November to April",
+        "costLevel": "medium",
+        "travelNote": "Mexico is popular for beaches, food, ancient ruins, colonial cities, nature, and cultural travel.",
+        "safetyNote": "Conditions vary by region, so research destinations and avoid poorly planned night travel.",
+        "recommendedStay": 10
+    },
+    "SUR": {
+        "dailyBudgetEur": 50,
+        "bestSeason": "February to April",
+        "costLevel": "medium",
+        "travelNote": "Suriname is suitable for rainforest travel, river trips, colonial history, cultural diversity, and nature tourism.",
+        "safetyNote": "Plan transport and guided activities ahead of time, especially for rainforest or river travel.",
+        "recommendedStay": 6
+    },
+    "MNE": {
+        "dailyBudgetEur": 55,
+        "bestSeason": "May to September",
+        "costLevel": "medium",
+        "travelNote": "Montenegro is known for coastal towns, mountains, historic sites, national parks, and compact travel routes.",
+        "safetyNote": "Use normal travel precautions and take extra care on mountain roads or remote routes.",
+        "recommendedStay": 5
+    }
+}

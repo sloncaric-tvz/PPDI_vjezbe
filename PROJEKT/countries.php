@@ -4,8 +4,8 @@ $activePage = 'countries';
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/data_helpers.php';
 
-$xmlPath = __DIR__ . '/data/countries.xml';
-$xsdPath = __DIR__ . '/data/countries.xsd';
+$xmlPath = __DIR__ . '/data/countries2.xml';
+$xsdPath = __DIR__ . '/data/countries2.xsd';
 
 if (!validate_countries_xml($xmlPath, $xsdPath)) {
     exit;
@@ -88,14 +88,14 @@ $countries = load_countries_xml($xmlPath, isset($xpath) ? $xpath : '');
                         <th>Capital</th>
                         <th>Region</th>
                         <th>Currency</th>
-                        <th>Language</th>
+                        <th>Language(s)</th>
                         <th>Link</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                        foreach($countries as $country){
-                            $url = e(url_for('country.php?code=' . $country->alpha3));
+                            $url = e(url_for('country.php?code='. $country->attributes()->code));
                             echo "<tr>
                             <td>$country->name</td>
                             <td>$country->capital</td>

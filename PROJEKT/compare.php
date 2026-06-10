@@ -2,6 +2,19 @@
 $pageTitle = 'Compare Countries | Travel Cost & Country Info';
 $activePage = 'compare';
 require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/data_helpers.php';
+require_once __DIR__ . '/includes/api_client.php';
+
+$xmlPath = __DIR__ . '/data/countries2.xml';
+$jsonPath = __DIR__ . '/data/travel_tips2.json';
+
+$leftCountryCode = isset($_GET['left']) ? $_GET['left'] : '' ;
+$rightCountryCode = isset($_GET['right']) ? $_GET['right'] : '' ;
+
+$travelTips = load_travel_tips_json($jsonPath);
+$countriesXml = simplexml_load_file($xmlPath);
+
+$countryCodes = $countriesXml->xpath('/countries/country/@code');
 ?>
 
 <section class="container page-header">
@@ -18,30 +31,60 @@ require_once __DIR__ . '/includes/header.php';
         <div class="form-row">
             <label for="left">First country</label>
             <select id="left" name="left">
-                <option value="HRV" <?=$_GET['left'] == 'HRV' ? 'selected' : ''?>>Croatia</option>
-                <option value="JPN" <?=$_GET['left'] == 'JPN' ? 'selected' : ''?>>Japan</option>
-                <option value="CAN" <?=$_GET['left'] == 'CAN' ? 'selected' : ''?>>Canada</option>
-                <option value="BRA" <?=$_GET['left'] == 'BRA' ? 'selected' : ''?>>Brazil</option>
-                <option value="AUS" <?=$_GET['left'] == 'AUS' ? 'selected' : ''?>>Australia</option>
-                <option value="EGY" <?=$_GET['left'] == 'EGY' ? 'selected' : ''?>>Egypt</option>
+                <option value="" disabled <?= $leftCountryCode == '' ? 'selected' : ''?>>Odaberi državu</option>
+                <?php
+                    foreach($countryCodes as $code){
+                        $countryName = $countriesXml->xpath('/countries/country[@code="'.$code[0].'"]/name');
+                        $option =  '<option value="' . $code[0] . '" ';
+                        if($leftCountryCode == $code[0]){
+                            $option .= 'selected';
+                        }
+                        $option .= '>'.$countryName[0].'</option>';
+                        echo $option;
+                    }
+                ?>
             </select>
         </div>
 
         <div class="form-row">
             <label for="right">Second country</label>
             <select id="right" name="right">
-                <option value="JPN" <?=$_GET['right'] == 'JPN' ? 'selected' : ''?>>Japan</option>
-                <option value="HRV" <?=$_GET['right'] == 'HRV' ? 'selected' : ''?>>Croatia</option>
-                <option value="CAN" <?=$_GET['right'] == 'CAN' ? 'selected' : ''?>>Canada</option>
-                <option value="BRA" <?=$_GET['right'] == 'BRA' ? 'selected' : ''?>>Brazil</option>
-                <option value="AUS" <?=$_GET['right'] == 'AUS' ? 'selected' : ''?>>Australia</option>
-                <option value="EGY" <?=$_GET['right'] == 'EGY' ? 'selected' : ''?>>Egypt</option>
+                <option value="" disabled <?= $rightCountryCode == '' ? 'selected' : ''?>>Odaberi državu</option>
+                <?php
+                    foreach($countryCodes as $code){
+                        $countryName = $countriesXml->xpath('/countries/country[@code="'.$code[0].'"]/name');
+                        $option =  '<option value="' . $code[0] . '" ';
+                        if($rightCountryCode == $code[0]){
+                            $option .= 'selected';
+                        }
+                        $option .= '>'.$countryName[0].'</option>';
+                        echo $option;
+                    }
+                ?>
             </select>
         </div>
 
         <button class="button button-primary" type="submit">Compare</button>
     </form>
 </section>
+
+<?php
+if($leftCountryCode != '' and $rightCountryCode != ''){
+    $travelTipsLeft = $travelTips[$leftCountryCode];
+    $travelTipsRight = $travelTips[$rightCountryCode];
+
+    $restCountryLeft = get_country_info_from_rest_api($leftCountryCode);
+    $restCountryRight = get_country_info_from_rest_api($rightCountryCode);
+
+    $leftCountry = $countriesXml->xpath("/countries/country[@code='$leftCountryCode']")[0];
+    $rightCountry = $countriesXml->xpath("/countries/country[@code='$rightCountryCode']")[0];
+
+    $urlLeft = e(url_for('country.php?code='. $leftCountryCode));
+    $urlRight = e(url_for('country.php?code='. $rightCountryCode));
+} else {
+    exit;
+}
+?>
 
 <section class="container section-stack">
     <div class="table-card">
@@ -58,35 +101,50 @@ require_once __DIR__ . '/includes/header.php';
                 <thead>
                     <tr>
                         <th>Category</th>
-                        <th>Country A</th>
-                        <th>Country B</th>
+                        <th><a href="<?= $urlLeft?>"><?= $leftCountry->name;?></a></th>
+                        <th><a href="<?= $urlRight?>"><?= $rightCountry->name;?></a></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Capital</td>
-                        <td><!-- TODO --> Zagreb</td>
-                        <td><!-- TODO --> Tokyo</td>
+                        <td><?= $leftCountry->capital ;?></td>
+                        <td><?= $rightCountry->capital ;?></td>
                     </tr>
                     <tr>
                         <td>Currency</td>
-                        <td><!-- TODO --> EUR</td>
-                        <td><!-- TODO --> JPY</td>
+                        <td><?= $leftCountry->currency ;?></td>
+                        <td><?= $rightCountry->currency ;?></td>
                     </tr>
                     <tr>
                         <td>Daily budget</td>
-                        <td><!-- TODO --> 75 EUR</td>
-                        <td><!-- TODO --> 110 EUR</td>
+                        <td><?= $travelTipsLeft['dailyBudgetEur'];?> € (<?= ucfirst($travelTipsLeft['costLevel']); ?>)</td>
+                        <td><?= $travelTipsRight['dailyBudgetEur'];?> € (<?= ucfirst($travelTipsRight['costLevel']); ?>)</td>
                     </tr>
                     <tr>
                         <td>Best season</td>
-                        <td><!-- TODO --> Spring</td>
-                        <td><!-- TODO --> Spring</td>
+                        <td><?= $travelTipsLeft['bestSeason'];?></td>
+                        <td><?= $travelTipsRight['bestSeason'];?></td>
+                    </tr>
+                    <tr>
+                        <td>Region</td>
+                        <td><?= $leftCountry->region . ' ('. $leftCountry->subregion.')' ;?></td>
+                        <td><?= $rightCountry->region . ' ('. $rightCountry->subregion.')' ;?></td>
                     </tr>
                     <tr>
                         <td>Population</td>
-                        <td><!-- TODO: REST --> API placeholder</td>
-                        <td><!-- TODO: REST --> API placeholder</td>
+                        <td><?= number_format($restCountryLeft['population']);?></td>
+                        <td><?= number_format($restCountryRight['population']);?></td>
+                    </tr>
+                    <tr>
+                        <td>Safety</td>
+                        <td><?= $travelTipsLeft['safetyNote'];?></td>
+                        <td><?= $travelTipsRight['safetyNote'];?></td>
+                    </tr>
+                    <tr>
+                        <td>Tips</td>
+                        <td><?= $travelTipsLeft['travelNote'];?></td>
+                        <td><?= $travelTipsRight['travelNote'];?></td>
                     </tr>
                 </tbody>
             </table>

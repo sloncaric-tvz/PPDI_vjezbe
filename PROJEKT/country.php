@@ -5,16 +5,21 @@ require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/api_client.php';
 require_once __DIR__ . '/includes/data_helpers.php';
 
-$jsonPath = __DIR__ . '/data/travel_tips.json';
+
+$xmlPath = __DIR__ . '/data/countries2.xml';
+$jsonPath = __DIR__ . '/data/travel_tips2.json';
 $travel_tips = load_travel_tips_json($jsonPath);
 
+$countriesXml = simplexml_load_file($xmlPath);
+
 $selectedCode = selected_country_code('');
+$countryCodes = $countriesXml->xpath('/countries/country/@code');
 
 if($selectedCode != ''){
-    $xmlPath = __DIR__ . '/data/countries.xml';
-    $xpath = "//country[alpha3='$selectedCode']";
+    $xpath = "//country[@code='$selectedCode']";
     $country = load_countries_xml($xmlPath, $xpath)[0];
     $restCountriesUrl = build_rest_countries_url($selectedCode);
+    $restCountryInfo = get_country_info_from_rest_api($selectedCode);
 }
 ?>
 
@@ -32,13 +37,18 @@ if($selectedCode != ''){
         <div class="form-row">
             <label for="code">Country code</label>
             <select id="code" name="code">
-                <option value="" disabled selected>Odaberi državu</option>
-                <option value="HRV" <?= $selectedCode === 'HRV' ? 'selected' : ''; ?>>Croatia - HRV</option>
-                <option value="JPN" <?= $selectedCode === 'JPN' ? 'selected' : ''; ?>>Japan - JPN</option>
-                <option value="CAN" <?= $selectedCode === 'CAN' ? 'selected' : ''; ?>>Canada - CAN</option>
-                <option value="BRA" <?= $selectedCode === 'BRA' ? 'selected' : ''; ?>>Brazil - BRA</option>
-                <option value="AUS" <?= $selectedCode === 'AUS' ? 'selected' : ''; ?>>Australia - AUS</option>
-                <option value="EGY" <?= $selectedCode === 'EGY' ? 'selected' : ''; ?>>Egypt - EGY</option>
+                <option value="" disabled <?= $selectedCode == '' ? 'selected' : ''?>>Odaberi državu</option>
+                <?php
+                    foreach($countryCodes as $code){
+                        $countryName = $countriesXml->xpath('/countries/country[@code="'.$code[0].'"]/name');
+                        $option =  '<option value="' . $code[0] . '" ';
+                        if($selectedCode == $code[0]){
+                            $option .= 'selected';
+                        }
+                        $option .= '>'.$countryName[0].'</option>';
+                        echo $option;
+                    }
+                ?>
             </select>
         </div>
         <button class="button button-primary" type="submit">Load country</button>
@@ -54,7 +64,10 @@ if($selectedCode != ''){
 
 <section class="container country-summary">
     <div class="summary-visual">
-        <div class="flag-placeholder" aria-label="Flag placeholder">Flag</div>
+        <!--<div class="flag-placeholder" aria-label="Flag placeholder">
+        </div>-->
+        
+        <img src=<?= '"' . $restCountryInfo['flags']['svg'] . '"'; ?> alt="Country Flag" class="flag-placeholder">
         <p class="data-badge">Selected code: <?= e($selectedCode); ?></p>
     </div>
 
@@ -95,7 +108,7 @@ if($selectedCode != ''){
                     <dd><?= $country->currency?></dd>
                 </div>
                 <div>
-                    <dt>Language</dt>
+                    <dt>Language(s)</dt>
                     <dd><?= $country->language?></dd>
                 </div>
             </dl>
@@ -109,15 +122,23 @@ if($selectedCode != ''){
             <dl class="detail-list">
                 <div>
                     <dt>Estimated daily budget</dt>
-                    <dd><?= $travel_tips[$selectedCode]['dailyBudgetEur'];?> €</dd>
+                    <dd><?= $travel_tips[$selectedCode]['dailyBudgetEur'];?> € (<?= ucfirst($travel_tips[$selectedCode]['costLevel']); ?>)</dd>
                 </div>
                 <div>
                     <dt>Best season</dt>
                     <dd><?= $travel_tips[$selectedCode]['bestSeason'];?></dd>
                 </div>
                 <div>
-                    <dt>Travel note</dt>
+                    <dt>Travel Note</dt>
+                    <dd><?= $travel_tips[$selectedCode]['travelNote'];?></dd>
+                </div>
+                <div>
+                    <dt>Safety Note</dt>
                     <dd><?= $travel_tips[$selectedCode]['safetyNote'];?></dd>
+                </div>
+                <div>
+                    <dt>Recommended Stay</dt>
+                    <dd><?= $travel_tips[$selectedCode]['recommendedStay'];?> days</dd>
                 </div>
             </dl>
         </article>
@@ -130,15 +151,19 @@ if($selectedCode != ''){
             <dl class="detail-list">
                 <div>
                     <dt>Population</dt>
-                    <dd><!-- TODO: REST API value --> API placeholder</dd>
+                    <dd><?= number_format($restCountryInfo['population']) ;?><dd>
                 </div>
                 <div>
                     <dt>Official name</dt>
-                    <dd><!-- TODO: REST API value --> API placeholder</dd>
+                    <dd><?php echo $restCountryInfo['name']['official'].'<br>';
+                    foreach($restCountryInfo['name']['nativeName'] as $key => $value){
+                        echo '(' . $value['official'] . ')<br>' ;
+                    }
+                    ?></dd>
                 </div>
                 <div>
                     <dt>Map link</dt>
-                    <dd><!-- TODO: REST API value --> API placeholder</dd>
+                    <dd><a <?= 'href="' . $restCountryInfo['maps']['googleMaps'] . '"'; ?>>Check out on Google Maps</a></dd>
                 </div>
             </dl>
         </article>

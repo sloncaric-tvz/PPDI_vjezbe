@@ -6,8 +6,14 @@ require_once __DIR__ . '/includes/api_client.php';
 
 $from = strtoupper(trim($_GET['from'] ?? 'EUR'));
 $to = strtoupper(trim($_GET['to'] ?? 'JPY'));
-$amount = $_GET['amount'] ?? '100';
-$exchangeUrl = build_exchange_rate_url($from, $to);
+$amount = $_GET['amount'] ?? '1';
+if($from == $to){
+    $exchangeRate = 1;
+} else {
+    $exchangeUrl = build_exchange_rate_url($from, $to);
+    $exchangeRate = get_exchange_rate($from, $to);
+}
+
 ?>
 
 <section class="container page-header">
@@ -23,7 +29,7 @@ $exchangeUrl = build_exchange_rate_url($from, $to);
     <form class="filter-form" method="get" action="currency.php">
         <div class="form-row">
             <label for="amount">Amount</label>
-            <input type="number" id="amount" name="amount" min="1" step="0.01" value="<?= e($amount); ?>">
+            <input type="number" id="amount" name="amount" min="1" step="0.1" value="<?= e($amount); ?>">
         </div>
 
         <div class="form-row">
@@ -43,7 +49,7 @@ $exchangeUrl = build_exchange_rate_url($from, $to);
 <section class="container section-stack">
     <div class="result-panel">
         <p class="eyebrow">Conversion result</p>
-        <h2><!-- TODO: Calculated conversion result --> <?= e($amount); ?> <?= e($from); ?> = API result <?= e($to); ?></h2>
+        <h2><?= e(number_format($amount)); ?> <?= e($from); ?> = <?= number_format($exchangeRate * $amount); ?> <?= e($to); ?></h2>
         <p>
             Replace this placeholder with the value returned from <code>get_exchange_rate()</code>
             multiplied by the entered amount.
@@ -54,7 +60,7 @@ $exchangeUrl = build_exchange_rate_url($from, $to);
 <section class="container section-stack">
     <div class="code-panel">
         <h2>Exchange-rate REST URL</h2>
-        <pre><code><?= e($exchangeUrl); ?></code></pre>
+        <pre></code></pre>
         <p>
             Frankfurter returns a single exchange rate for this pair. Your PHP code should decode the JSON response
             and multiply the returned rate by the amount entered above.

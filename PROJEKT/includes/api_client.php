@@ -22,6 +22,24 @@ function build_rest_countries_url(string $alpha3Code): string
  * Example output:
  * https://api.frankfurter.dev/v2/rate/EUR/JPY
  */
+
+function get_country_info_from_rest_api(string $alpha3Code): ?array
+{
+    $url = build_rest_countries_url($alpha3Code);
+    if($response = file_get_contents($url)){
+        return json_decode($response, true);
+    }
+    else return null;
+    // TODO:
+    // $response = file_get_contents($url);
+    // return json_decode($response, true);
+}
+
+/**
+ * TODO: Implement the actual exchange-rate API call.
+ * Frankfurter returns the rate; multiply it by the amount inside currency.php.
+ */
+
 function build_exchange_rate_url(string $baseCurrency, string $quoteCurrency): string
 {
     return FRANKFURTER_BASE_URL
@@ -29,37 +47,17 @@ function build_exchange_rate_url(string $baseCurrency, string $quoteCurrency): s
         . '/' . rawurlencode(strtoupper($quoteCurrency));
 }
 
-/**
- * TODO: Implement the actual REST call.
- * Suggested options:
- * - file_get_contents($url)
- * - cURL
- *
- * Return decoded JSON as an associative array.
- */
-function get_country_info_from_rest_api(string $alpha3Code): ?array
-{
-    $url = build_rest_countries_url($alpha3Code);
 
-    // TODO:
-    // $response = file_get_contents($url);
-    // return json_decode($response, true);
-
-    return null;
-}
-
-/**
- * TODO: Implement the actual exchange-rate API call.
- * Frankfurter returns the rate; multiply it by the amount inside currency.php.
- */
 function get_exchange_rate(string $baseCurrency, string $quoteCurrency): ?float
 {
     $url = build_exchange_rate_url($baseCurrency, $quoteCurrency);
 
-    // TODO:
-    // $response = file_get_contents($url);
-    // $data = json_decode($response, true);
-    // return isset($data['rate']) ? (float) $data['rate'] : null;
-
-    return null;
+    $response = file_get_contents($url);
+    $data = json_decode($response, true);
+    
+    if($response = file_get_contents($url)){
+        $rate = $data['rate'];
+        return $rate;
+    }
+    else return null;
 }
